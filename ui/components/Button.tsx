@@ -13,15 +13,15 @@ const buttonVariants = cva(
             variant: {
                 primary: [
                     "bg-teal-700 text-neutral-0 inset-shadow-[0_0_0_1x_rgba(34,38,39,0.12)]",
-                    "border-2 border-[rgb(255,255,255,0.12)] dark:border-neutral-400",
+                    "border-2 border-[rgb(255,255,255,0.12)] dark:border-neutral-dark-400",
                     "hover:bg-teal-800",
                     "focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#FFF,0_0_0_4px_#014745]"
                 ],
                 secondary: [
-                    "bg-neutral-0 text-neutral-900 dark:bg-neutral-800 dark:text-neutral-0",
+                    "bg-neutral-0 text-neutral-900 dark:bg-neutral-dark-800 dark:text-neutral-0",
                     "border border-neutral-400",
-                    "hover:bg-neutral-100 hover:border-neutral-400 dark:hover:border-neutral-500 dark:hover:bg-neutral-600",
-                    "focus:border-neutral-300 dark:focus:border-neutral-500 dark:focus:bg-neutral-800",
+                    "hover:bg-neutral-100 hover:border-neutral-400 dark:hover:border-neutral-dark-500 dark:hover:bg-neutral-dark-600",
+                    "focus:border-neutral-300 dark:focus:border-neutral-dark-500 dark:focus:bg-neutral-dark-800",
                     "focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#FFF,0_0_0_4px_#014745]",
                     "dark:focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#001F1F,0_0_0_4px_#B1B9B9]",
                     "active:border-teal-700 dark:active:border-neutral-0"

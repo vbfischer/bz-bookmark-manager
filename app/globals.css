@@ -14,52 +14,33 @@
   --color-neutral-600: #899492;
   --color-neutral-800: #4c5c59;
   --color-neutral-900: #051513;
+  
+  --color-neutral-dark-100: #b1b9b9;
+  --color-neutral-dark-300: #00706e;
+  --color-neutral-dark-400: #004746;
+  --color-neutral-dark-500: #004241;
+  --color-neutral-dark-600: #002e2d;
+  --color-neutral-dark-800: #001f1f;
+  --color-neutral-dark-900: #001414;
 
   --color-teal-700: #014745;
   --color-teal-800: #013c3b;
 
   --color-red-600: #fd4740;
   --color-red-800: #cb0a04;
+  
+  --color-destructive: var(--color-red-800);
 
   --font-sans: var(--font-manrope);
 
   /* Light theme shadows */
   --shadow-hover: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
+  --shadow-hover-dark: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
+
   --shadow-focus: 0 0 0 1px rgba(10, 13, 18, 0.18) inset, 0 0 0 2px #ffffff,
     0 0 0 4px #014745;
   --shadow-focus-dark: 0 0 0 1px rgba(10, 13, 18, 0.18) inset, 0 0 0 2px #001f1f,
-    0 0 0 4px var(--color-neutral-100);
-}
-
-@theme dark {
-  --color-neutral-0: #ffffff;
-  --color-neutral-100: #b1b9b9;
-  --color-neutral-300: #00706e;
-  --color-neutral-400: #004746;
-  --color-neutral-500: #004241;
-  --color-neutral-600: #002e2d;
-  --color-neutral-800: #001f1f;
-  --color-neutral-900: #001414;
-
-  /* Dark theme shadows */
-  --shadow-hover: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
-}
-
-/* Dark mode via prefers-color-scheme (for browser preference) */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme]) {
-    --color-neutral-0: #ffffff;
-    --color-neutral-100: #b1b9b9;
-    --color-neutral-300: #00706e;
-    --color-neutral-400: #004746;
-    --color-neutral-500: #004241;
-    --color-neutral-600: #002e2d;
-    --color-neutral-800: #001f1f;
-    --color-neutral-900: #001414;
-
-    /* Dark theme shadows */
-    --shadow-hover: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
-  }
+    0 0 0 4px var(--color-neutral-dark-100);
 }
 
 body {
