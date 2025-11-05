@@ -61,26 +61,6 @@ export default function LoginForm() {
           <div className={clsx(
             "flex flex-col gap-4"
           )}>
-            <Input
-              labelText="Email"
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)} />
-
-            <Input
-              labelText="Password"
-              id="password"
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
             <Button
               type="submit"
               disabled={loading}
@@ -91,6 +71,7 @@ export default function LoginForm() {
 
 
           <div className="text-center">
+          <Input />
             <button
               type="button"
               className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 text-sm"
