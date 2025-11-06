@@ -1,11 +1,10 @@
-import BookmarkIconLight from '@/assets/icons/logo-light-theme.svg';
-import BookmarkIconDark from '@/assets/icons/logo-dark-theme.svg'
+import { LogoDarkTheme, LogoLightTheme } from "@/ui/icons";
 
 export const Logo = () => {
   return (
     <>
-      <BookmarkIconLight className="block dark:hidden" />
-      <BookmarkIconDark className="hidden dark:block" />
+      <LogoLightTheme className="w-[214px] h-8 block dark:hidden" />
+      <LogoDarkTheme className="w-[214px] h-8 hidden dark:block" />
     </>
   );
 };
