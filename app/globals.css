@@ -41,6 +41,7 @@
     0 0 0 4px #014745;
   --shadow-focus-dark: 0 0 0 1px rgba(10, 13, 18, 0.18) inset, 0 0 0 2px #001f1f,
     0 0 0 4px var(--color-neutral-dark-100);
+  --shadow-dropdown: 0 6px 14px 0 rgba(34, 38, 39, 0.10);
 }
 
 body {

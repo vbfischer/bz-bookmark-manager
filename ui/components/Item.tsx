@@ -1,0 +1,114 @@
+import { cn } from "@/lib/utils"
+import { Slot } from "@radix-ui/react-slot"
+
+import { cva, VariantProps } from "class-variance-authority"
+
+export const Item = ({ className, asChild = false, ...props }: React.ComponentProps<"div"> & { asChild?: boolean }) => {
+    const Comp = asChild ? Slot : "div"
+
+    return (
+        <Comp
+            data-slot="item"
+            className={cn(
+                // Layout & Flexbox
+                "group/item flex items-center flex-wrap gap-2",
+                // Sizing & Spacing
+                "py-2 px-3",
+                // Color & Background
+                "bg-neutral-0 text-sm dark:bg-neutral-dark-800 dark:text-neutral-dark-100",
+                // Border & Border Radius
+                "border border-transparent rounded-md",
+                // Hover
+                "hover:bg-neutral-100 dark:hover:bg-neutral-dark-600 dark:hover:text-neutral-0",
+                // Active
+                "active:bg-neutral-100 dark:active:bg-neutral-dark-600 dark:active:text-neutral-0",
+                // Focus & Ring
+                "outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
+                // Transitions & Animations
+                "transition-colors duration-100",
+                // Hover States
+                "[a]:hover:bg-accent/50 [a]:transition-colors",
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
+const itemMediaVariants = cva(
+    [ 
+        // Layout & Positioning
+        "flex shrink-0 items-center justify-center",
+        // Sizing & Spacing
+        "gap-2",
+        // Transforms & Positioning
+        "group-has-data-[slot=item-description]/item:self-start group-has-data-[slot=item-description]/item:translate-y-0.5",
+        // Pointer Events
+        "[&_svg]:pointer-events-none",
+    ],
+    {
+        variants: {
+            variant: {
+                default: "bg-transparent",
+                icon: "size-5 [&_svg:not([class*='size-'])]:size-5",
+                image:
+                    "size-10 rounded-sm overflow-hidden [&_img]:size-full [&_img]:object-cover",
+            },
+        },
+        defaultVariants: {
+            variant: "default",
+        },
+    }
+)
+
+export const ItemMedia = ({ className, variant = "default", ...props }: React.ComponentProps<"div"> & VariantProps<typeof itemMediaVariants>) => {
+    return (
+        <div
+            data-slot="item-media"
+            data-variant={variant}
+            className={cn(itemMediaVariants({ variant, className }))}
+            {...props}
+        />
+    )
+}
+
+export const ItemContent = ({ className, ...props }: React.ComponentProps<"div">) => {
+    return (
+        <div
+            data-slot="item-content"
+            className={cn(
+                "flex flex-1 gap-1 flex-col",
+                "[&+[data-slot=item-content]]:flex-none",
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
+export const ItemTitle = ({ className, ...props }: React.ComponentProps<"div">) => {
+    return (
+        <div
+            data-slot="item-title"
+            className={cn(
+                "flex w-fit items-center gap-2 text-sm leading-snug font- text-[16px]",
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
+export const ItemDescription = ({ className, ...props }: React.ComponentProps<"p">) => {
+    return (
+        <p
+            data-slot="item-description"
+            className={cn(
+                "text-muted-foreground line-clamp-2 text-sm leading-normal font-normal text-balance",
+                "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+                className
+            )}
+            {...props}
+        />
+    )
+}
