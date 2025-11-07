@@ -1,7 +1,8 @@
 import { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { Item, ItemContent, ItemDescription, ItemMedia, ItemTitle } from "./Item";
+import { ItemGroup, Item, ItemContent, ItemDescription, ItemMedia, ItemTitle, ItemHeader, ItemFooter, ItemActions } from "./Item";
 import { IconArchive } from "../icons";
 import { Count } from "./Count";
+import { Checkbox } from "./Checkbox";
 
 const meta = {
     title: "Components/Item",
@@ -38,23 +39,74 @@ export const Default: Story = {
 export const WithMedia: Story = {
     render: () => {
         return (
-            <div className="bg-neutral-100 p-8">
-                <Item asChild className="w-[280px]">
-                    <a href="#">
-                        <ItemMedia variant="icon">
-                            <IconArchive />
-                        </ItemMedia>
-                        <ItemContent>
-                            <ItemTitle>Basic Item</ItemTitle>
-                        </ItemContent>
-                        <ItemContent>
-                            <ItemDescription>
-                                <Count label="6"/>
-                            </ItemDescription>
-                        </ItemContent>
-                    </a>
+            <Item asChild className="w-[280px]">
+                <a href="#">
+                    <ItemMedia variant="icon">
+                        <IconArchive />
+                    </ItemMedia>
+                    <ItemContent>
+                        <ItemTitle>Basic Item</ItemTitle>
+                    </ItemContent>
+                    <ItemContent>
+                        <ItemDescription>
+                            <Count label="6" />
+                        </ItemDescription>
+                    </ItemContent>
+                </a>
+            </Item>
+        )
+    }
+}
+
+export const WithItemGroup: Story = {
+    render: () => {
+        return (
+            <ItemGroup className="w-[280px] gap-2">
+                <Item>
+                    <ItemContent>
+                        <ItemTitle>Item 1</ItemTitle>
+                    </ItemContent>
                 </Item>
-            </div>
+                <Item>
+                    <ItemContent>
+                        <ItemTitle>Item 2</ItemTitle>
+                    </ItemContent>
+                </Item>
+                <Item>
+                    <ItemContent>
+                        <ItemTitle>Item 3</ItemTitle>
+                    </ItemContent>
+                </Item>
+            </ItemGroup>
+        )
+    }
+}
+
+export const WithItemHeaderAndFooter: Story = {
+    render: () => {
+        return (
+            <Item>
+                <ItemHeader>Header</ItemHeader>
+                <ItemContent>
+                    <ItemTitle>Title</ItemTitle>
+                </ItemContent>
+                <ItemFooter>Footer</ItemFooter>
+            </Item>
+        )
+    }
+}
+
+export const WithActionItem: Story = {
+    render: () => {
+        return (
+            <Item>
+                <ItemActions>
+                   <Checkbox/> 
+                </ItemActions>
+                <ItemContent>
+                    <ItemTitle>Title</ItemTitle>
+                </ItemContent>
+            </Item>
         )
     }
 }

@@ -5,6 +5,13 @@ import {withThemeByDataAttribute} from '@storybook/addon-themes';
 
 const preview: Preview = {
   parameters: {
+    backgrounds: {
+      default: 'gray',
+      options: {
+        light: { name: 'Gray', value: '#CCC' },
+      }
+    },
+
     controls: {
       matchers: {
        color: /(background|color)$/i,
@@ -34,6 +41,12 @@ const preview: Preview = {
           }
         </style>
       `
+    }
+  },
+
+  initialGlobals: {
+    backgrounds: {
+      value: 'gray'
     }
   },
 

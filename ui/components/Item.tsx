@@ -2,6 +2,18 @@ import { cn } from "@/lib/utils"
 import { Slot } from "@radix-ui/react-slot"
 
 import { cva, VariantProps } from "class-variance-authority"
+import { Separator } from "./Separator"
+
+export const ItemGroup = ({ className, ...props }: React.ComponentProps<"div">) => {
+    return (
+        <div
+            role="list"
+            data-slot="item-group"
+            className={cn("group/item-group flex flex-col", className)}
+            {...props}
+        />
+    )
+}
 
 export const Item = ({ className, asChild = false, ...props }: React.ComponentProps<"div"> & { asChild?: boolean }) => {
     const Comp = asChild ? Slot : "div"
@@ -36,7 +48,7 @@ export const Item = ({ className, asChild = false, ...props }: React.ComponentPr
 }
 
 const itemMediaVariants = cva(
-    [ 
+    [
         // Layout & Positioning
         "flex shrink-0 items-center justify-center",
         // Sizing & Spacing
@@ -108,6 +120,53 @@ export const ItemDescription = ({ className, ...props }: React.ComponentProps<"p
                 "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
                 className
             )}
+            {...props}
+        />
+    )
+}
+
+export const ItemActions = ({ className, ...props }: React.ComponentProps<"div">) => {
+    return (
+        <div
+            data-slot="item-actions"
+            className={cn("flex items-center gap-2", className)}
+            {...props}
+        />
+    )
+}
+
+export const ItemHeader = ({ className, ...props }: React.ComponentProps<"div">) => {
+    return (
+        <div
+            data-slot="item-header"
+            className={cn(
+                "flex basis-full items-center justify-between gap-2",
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
+export const ItemFooter = ({ className, ...props }: React.ComponentProps<"div">) => {
+    return (
+        <div
+            data-slot="item-footer"
+            className={cn(
+                "flex basis-full items-center justify-between gap-2",
+                className
+            )}
+            {...props}
+        />
+    )
+}
+
+export const ItemSeparator = ({ className, ...props }: React.ComponentProps<typeof Separator>) => {
+    return (
+        <Separator
+            data-slot="item-separator"
+            orientation="horizontal"
+            className={cn("my-0", className)}
             {...props}
         />
     )
