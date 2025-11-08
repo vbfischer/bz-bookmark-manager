@@ -1,6 +1,9 @@
+'use client'
+
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu"
 import { cn } from "@/lib/utils"
 import { IconCheck } from "../icons"
+import {useTheme} from 'next-themes';
 
 export const DropdownMenu = ({ ...props }: React.ComponentProps<typeof DropdownMenuPrimitive.Root>) => {
     return (
@@ -26,6 +29,9 @@ export const DropdownMenuContent = ({
     align = 'start',
     ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) => {
+    const {theme} = useTheme();
+
+    console.log('THEME', theme)
     return (
         <DropdownMenuPrimitive.Portal>
             <DropdownMenuPrimitive.Content

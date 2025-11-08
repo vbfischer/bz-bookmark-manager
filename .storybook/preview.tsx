@@ -1,7 +1,8 @@
 import type { Preview } from '@storybook/nextjs-vite'
 import "../app/globals.css";
 import { manrope } from "../app/fonts";
-import {withThemeByDataAttribute} from '@storybook/addon-themes';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import { ThemeProvider } from 'next-themes';
 
 const preview: Preview = {
   parameters: {
@@ -14,8 +15,8 @@ const preview: Preview = {
 
     controls: {
       matchers: {
-       color: /(background|color)$/i,
-       date: /Date$/i,
+        color: /(background|color)$/i,
+        date: /Date$/i,
       },
     },
 
@@ -58,7 +59,7 @@ const preview: Preview = {
       },
       defaultTheme: 'light'
     }),
-    
+
     (Story) => {
       // Apply the font variable to the document root
       if (typeof document !== 'undefined') {
@@ -66,13 +67,19 @@ const preview: Preview = {
         // Set the CSS variable directly with the Manrope font family
         document.documentElement.style.setProperty('--font-manrope', 'Manrope, sans-serif');
       }
-      
+
       return (
         <div className="font-manrope">
-          <Story/>
+          <Story />
         </div>
       );
-    }
+    },
+
+    (Story) => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    )
   ]
 };
 

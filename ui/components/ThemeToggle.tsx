@@ -1,10 +1,19 @@
+'use client'
+
 import { cn } from '@/lib/utils';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import { IconDarkTheme, IconLightTheme } from '../icons';
+import {useTheme} from 'next-themes';
 
 export const ThemeToggle = ({ className, ...props }: React.ComponentProps<typeof SwitchPrimitive.Root>) => {
+    const { theme, setTheme } = useTheme();
+
     return (
         <SwitchPrimitive.Root
+            onCheckedChange={(checked) => {
+                setTheme(checked ? 'dark' : 'light');
+            }}
+            checked={theme === 'dark'}
             data-slot="switch"
             className={cn(
                 "peer group relative p-0.5",

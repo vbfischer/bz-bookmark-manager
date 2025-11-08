@@ -29,7 +29,7 @@ export const Default: Story = {
     render: () => {
         return (
             <DropdownMenu open>
-                <DropdownMenuTrigger><Button label="Open Menu">Open Menu</Button></DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild><Button label="Open Menu">Open Menu</Button></DropdownMenuTrigger>
                 <DropdownMenuContent>
                     <DropdownMenuItem>Item 1</DropdownMenuItem>
                     <DropdownMenuItem>Item 2</DropdownMenuItem>
