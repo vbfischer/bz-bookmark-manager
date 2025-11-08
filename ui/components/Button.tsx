@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import { cva, VariantProps } from "class-variance-authority";
 import { clsx } from 'clsx';
@@ -19,7 +21,7 @@ const buttonVariants = cva(
                 ],
                 secondary: [
                     "bg-neutral-0 text-neutral-900 dark:bg-neutral-dark-800 dark:text-neutral-0",
-                    "border border-neutral-400",
+                    "border border-neutral-400 dark:border-neutral-dark-400",
                     "hover:bg-neutral-100 hover:border-neutral-400 dark:hover:border-neutral-dark-500 dark:hover:bg-neutral-dark-600",
                     "focus:border-neutral-300 dark:focus:border-neutral-dark-500 dark:focus:bg-neutral-dark-800",
                     "focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#FFF,0_0_0_4px_#014745]",

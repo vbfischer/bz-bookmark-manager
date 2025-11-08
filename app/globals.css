@@ -28,6 +28,8 @@
   --color-red-600: #fd4740;
   --color-red-800: #cb0a04;
   
+  --color-background: var(--color-neutral-0);
+  
   --color-destructive: var(--color-red-800);
   --color-input: var(--color-neutral-500); 
 
