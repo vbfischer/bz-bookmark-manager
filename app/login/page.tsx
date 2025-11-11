@@ -1,8 +1,15 @@
 import { redirectIfAuthenticated } from "@/lib/session";
-import LoginForm from "./login-form";
+import { cn } from "@/lib/utils";
+import { LoginForm } from "@/ui/components/forms/LoginForm";
 
 export default async function LoginPage() {
   await redirectIfAuthenticated();
 
-  return <LoginForm />;
+  return (
+    <div className={cn(
+      "min-h-screen flex justify-center items-center"
+    )}>
+      <LoginForm />
+    </div>
+  );
 }

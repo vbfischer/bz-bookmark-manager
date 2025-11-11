@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
     render: () => (
-        <Field>
+        <Field data-required>
             <FieldLabel htmlFor="fieldId">Label</FieldLabel>
             <Input id="fieldId" placeholder="Enter text here" />
         </Field>
@@ -37,7 +37,7 @@ export const WithFieldError: Story = {
     render: () => (
         <Field data-invalid>
             <FieldLabel htmlFor="fieldId">Label</FieldLabel>
-            <Input isError id="fieldId" placeholder="Enter text here" />
+            <Input id="fieldId" placeholder="Enter text here" />
             <FieldError>
                 This is a description for the field.
             </FieldError>

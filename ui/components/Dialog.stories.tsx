@@ -29,7 +29,6 @@ export const Default: Story = {
                         <Button variant="secondary" label="Cancel" />
                     </DialogClose>
                     <Button variant="primary" label="Confirm" />
-
                 </DialogFooter>
             </DialogContent>
         </Dialog>

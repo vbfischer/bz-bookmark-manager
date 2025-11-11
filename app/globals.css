@@ -1,11 +1,80 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-@variant dark (&:is([data-theme="dark"] *));
+@custom-variant dark (&:is([data-theme="dark"] *));
 
-@theme {
+@theme inline {
   --color-*: initial;
 
   /* Light theme colors */
+  --color-white: var(--color-neutral-0);
+  --color-black: var(--color-neutral-900);
+
+  --color-teal-700: #014745;
+  --color-teal-800: #013c3b;
+
+  --color-red-600: #fd4740;
+  --color-red-800: #cb0a04;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--color-red-800);
+  --color-input: var(--color-neutral-500);
+
+  --color-card: var(--color-background);
+  --color-card-foreground: var(--color-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-secondary: var(--accent-secondary);
+  --color-secondary-btn-border: var(--button-border);
+  --color-secondary-btn-border-accent: var(--button-border-accent);
+  --color-secondary-btn-active: var(--button-secondary-active);
+  --color-overlay: #131313;
+  --color-badge: var(--badge);
+  --color-badge-foreground: var(--badge-foreground);
+  --color-badge-border: var(--badge-border);
+  --color-badge-border-accent: var(--badge-border-accent);
+  --color-dropdown-foreground: var(--dropdown-foreground);
+  --color-dropdown-foreground-accent: var(--dropdown-foreground-accent);
+
+  --color-toggle-unchecked: #dde9e7;
+  --color-toggle-checked: #004241;
+  --color-toggle-thumb-unchecked: var(--color-neutral-0);
+  --color-toggle-thumb-checked: #002E2D;
+
+  --font-sans: var(--font-manrope);
+
+  --shadow-*: initial;
+  --shadow-xs: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
+  --shadow-sm: 0 2px 4px 0 rgba(21, 21, 21, 0.06);
+  --shadow-md: 0 6px 9px 0 rgba(21, 21, 21, 0.12);
+  --shadow-lg: 0 6px 14px 0 rgba(34, 38, 39, 0.1);
+  --shadow-xl: 10px 0 16px 0 rgba(0, 0, 0, 0.06);
+
+  /* Light theme shadows */
+  --shadow-hover: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
+  --shadow-hover-dark: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
+
+  --shadow-focus: 0 0 0 2px #ffffff, 0 0 0 4px #014745;
+  --shadow-focus-dark: 0 0 0 1px rgba(10, 13, 18, 0.18) inset, 0 0 0 2px #001f1f,
+    0 0 0 4px var(--color-neutral-dark-100);
+  --shadow-dropdown: 0 6px 14px 0 rgba(34, 38, 39, 0.1);
+  --shadow-card: 0 2px 4px 0px rgba(21, 21, 21, 0.06);
+  --shadow-button: 0 0 0 1px rgba(34, 38, 39, 0.12) inset;
+  --shadow-focus-ring: 0 0 0 1px rgba(10, 13, 18, 0.18) inset,
+    0 0 0 2px var(--background), 0 0 0 4px var(--foreground);
+  --shadow-focus-ring-destructive: 0 0 0 1px rgba(10, 13, 18, 0.18) inset,
+    0 0 0 2px var(--background), 0 0 0 1px rgba(10, 13, 18, 0.18) inset,
+    0 0 0 2px var(--background), 0 0 0 4px var(--color-destructive);
+}
+
+:root {
   --color-neutral-0: #ffffff;
   --color-neutral-100: #e8f0ef;
   --color-neutral-300: #dde9e7;
@@ -14,36 +83,63 @@
   --color-neutral-600: #899492;
   --color-neutral-800: #4c5c59;
   --color-neutral-900: #051513;
-  --color-neutral-dark-100: #b1b9b9;
-  --color-neutral-dark-300: #00706e;
-  --color-neutral-dark-400: #004746;
-  --color-neutral-dark-500: #004241;
-  --color-neutral-dark-600: #002e2d;
-  --color-neutral-dark-800: #001f1f;
-  --color-neutral-dark-900: #001414;
 
-  --color-teal-700: #014745;
-  --color-teal-800: #013c3b;
+  --background: var(--color-neutral-0);
+  --foreground: var(--color-neutral-800);
+  --primary: var(--color-teal-700);
+  --primary-foreground: var(--color-neutral-0);
+  --secondary: var(--color-neutral-0);
+  --secondary-foreground: var(--color-neutral-900);
 
-  --color-red-600: #fd4740;
-  --color-red-800: #cb0a04;
-  
-  --color-background: var(--color-neutral-0);
-  
-  --color-destructive: var(--color-red-800);
-  --color-input: var(--color-neutral-500); 
+  --focus-ring: var(--color-teal-700);
+  --accent: var(--color-teal-800);
+  --accent-secondary: var(--color-neutral-100);
+  --button-border: var(--color-neutral-400);
+  --button-border-accent: var(--color-neutral-300);
+  --button-secondary-active: var(--color-teal-700);
 
-  --font-sans: var(--font-manrope);
+  --badge: var(--color-neutral-100);
+  --badge-foreground: var(--color-neutral-800);
+  --badge-border: var(--color-neutral-300);
+  --badge-border-accent: var(--color-neutral-400);
 
-  /* Light theme shadows */
-  --shadow-hover: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
-  --shadow-hover-dark: 0 1px 2px 0 rgba(10, 13, 18, 0.05);
+  --dropdown-foreground: var(--color-neutral-600);
+  --dropdown-foreground-accent: var(--color-neutral-600);
 
-  --shadow-focus: 0 0 0 2px #ffffff,
-    0 0 0 4px #014745;
-  --shadow-focus-dark: 0 0 0 1px rgba(10, 13, 18, 0.18) inset, 0 0 0 2px #001f1f,
-    0 0 0 4px var(--color-neutral-dark-100);
-  --shadow-dropdown: 0 6px 14px 0 rgba(34, 38, 39, 0.10);
+  --toggle: var(--color-neutral-300);
+  --toggle-secondary: var(--color-neutral-0);
+  --toggle-foreground: var(--color-neutral-900);
+}
+
+[data-theme="dark"] {
+  --color-neutral-100: #b1b9b9;
+  --color-neutral-300: #00706e;
+  --color-neutral-400: #004746;
+  --color-neutral-500: #004241;
+  --color-neutral-600: #002e2d;
+  --color-neutral-800: #001f1f;
+  --color-neutral-900: #001414;
+
+  --background: var(--color-neutral-800);
+  --foreground: var(--color-neutral-100);
+  --secondary: var(--color-neutral-800);
+  --secondary-foreground: var(--color-neutral-0);
+  --accent-secondary: var(--color-neutral-600);
+  --button-border: var(--color-neutral-400);
+  --button-border-accent: var(--color-neutral-500);
+  --button-secondary-active: var(--color-neutral-0);
+
+  --badge: var(--color-neutral-800);
+  --badge-foreground: var(--color-neutral-0);
+  --badge-border: var(--color-neutral-400);
+  --badge-border-accent: var(--color-neutral-400);
+
+  --dropdown-foreground: var(--color-neutral-100);
+  --dropdown-foreground-accent: var(--color-neutral-0);
+
+  --toggle: var(--color-neutral-500);
+  --toggle-secondary: var(--color-neutral-600);
+  --toggle-foreground: var(--color-neutral-0);
 }
 
 body {

@@ -2,11 +2,11 @@ import { cva, VariantProps } from "class-variance-authority";
 import clsx from "clsx";
 
 const hintTextVariants = cva(
-    "flex gap-100 text-neutral-800",
+    "flex gap-100 text-foreground",
     {
         variants: {
             variant: {
-                default: "dark:text-neutral-100",
+                default: "",
                 error: "text-red-800 dark:text-red-600"
             }
         },

@@ -17,3 +17,16 @@ export const Default: Story = {
         htmlFor: 'email',
     }
 }
+
+export const RequiredLabel: Story = {
+    args: {
+        children: "Required"
+    },
+    decorators: [
+        (Story) => (
+            <div className="group" data-required="true">
+                <Story/>
+            </div>
+        )
+    ]
+}

@@ -14,26 +14,30 @@ const buttonVariants = cva(
         variants: {
             variant: {
                 primary: [
-                    "bg-teal-700 text-neutral-0 inset-shadow-[0_0_0_1x_rgba(34,38,39,0.12)]",
-                    "border-2 border-[rgb(255,255,255,0.12)] dark:border-neutral-dark-400",
+                    "bg-primary text-primary-foreground shadow-button",
+                    "border-2 border-background/12",
                     "hover:bg-teal-800",
-                    "focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#FFF,0_0_0_4px_#014745]"
+                    "focus:shadow-focus-ring"
                 ],
                 secondary: [
-                    "bg-neutral-0 text-neutral-900 dark:bg-neutral-dark-800 dark:text-neutral-0",
-                    "border border-neutral-400 dark:border-neutral-dark-400",
-                    "hover:bg-neutral-100 hover:border-neutral-400 dark:hover:border-neutral-dark-500 dark:hover:bg-neutral-dark-600",
+                    "bg-secondary text-secondary-foreground",
+                    "border border-secondary-btn-border",
+                    "hover:bg-accent-secondary hover:border-secondary-btn-border-accent",
                     "focus:border-neutral-300 dark:focus:border-neutral-dark-500 dark:focus:bg-neutral-dark-800",
-                    "focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#FFF,0_0_0_4px_#014745]",
-                    "dark:focus:[box-shadow:0_0_0_1px_rgba(10,13,18,0.18)_inset,0_0_0_2px_#001F1F,0_0_0_4px_#B1B9B9]",
-                    "active:border-teal-700 dark:active:border-neutral-0"
+                    "focus:shadow-focus-ring",
+                    "active:border-secondary-btn-active"
                 ],
+                destructive: [
+                    "bg-destructive text-primary-foreground shadow-button",
+                    "border-2 border-background/12",
+                    "focus:shadow-focus-ring-destructive"
 
+                ]
             },
             size: {
-                sm: "px-[12px] py-[10px]",
-                md: "px-[16px] py-[12px]",
-                icon: "flex justify-center items-center p-0 w-[32px] h-[32px]"
+                sm: "px-3 py-2.5",
+                md: "px-4 py-3",
+                icon: "flex justify-center items-center p-0 w-8 h-8"
             }
         },
         defaultVariants: {
@@ -42,7 +46,7 @@ const buttonVariants = cva(
         },
         compoundVariants: [
             {
-                variant: ["primary", "secondary"],
+                variant: ["primary", "secondary", "destructive"],
                 size: ["sm", "md"],
                 class: [
                     "flex justify-center items-center gap-1 py-2.5 px-3",

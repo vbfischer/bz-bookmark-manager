@@ -66,9 +66,14 @@ export const FieldLabel = ({ className, ...props }: React.ComponentProps<typeof 
 
 const fieldDescriptionVariants = cva(
     [
-        "text-neutral-800 dark:text-neutral-dark-100 text-sm leading-normal font-normal group-has-data-[orientation=horizontal]/field:text-balance",
+        // Typography & color
+        "text-foreground text-sm font-normal leading-normal",
+        // Layout & spacing
         "last:mt-0 nth-last-2:-mt-1 [[data-variant=legend]+&]:-mt-1.5",
-        "[&>a:hover]:text-primary [&>a]:underline [&>a]:underline-offset-4",
+        // Text alignment (responsive)
+        "group-has-data-[orientation=horizontal]/field:text-balance",
+        // Link styling
+        "[&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary",
     ],
     {
         variants: {

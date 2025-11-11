@@ -46,6 +46,14 @@ export const Secondary: Story = {
     }
 }
 
+export const Destructive: Story = {
+    args: {
+        variant: "destructive",
+        size: "md",
+        label: "Destructive Button"
+    }
+}
+
 export const IconLeft: Story = {
     args: {
         variant: 'primary',

@@ -13,8 +13,9 @@ export interface ProfileProps {
 export const Profile = ({ className, name, emailAddress, ...props }: React.ComponentProps<typeof ItemGroup> & ProfileProps) => {
     return (
         <ItemGroup className={cn(
-            "bg-neutral-0 rounded-lg dark:bg-neutral-dark-800",
-            "border border-neutral-100  shadow-dropdown",
+            "bg-background rounded-lg",
+            "text-foreground",
+            "border border-accent-secondary shadow-dropdown",
             className
         )}
             {...props}

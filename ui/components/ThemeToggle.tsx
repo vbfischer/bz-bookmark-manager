@@ -3,27 +3,22 @@
 import { cn } from '@/lib/utils';
 import * as SwitchPrimitive from '@radix-ui/react-switch';
 import { IconDarkTheme, IconLightTheme } from '../icons';
-import {useTheme} from 'next-themes';
+import { useTheme } from 'next-themes';
 
 export const ThemeToggle = ({ className, ...props }: React.ComponentProps<typeof SwitchPrimitive.Root>) => {
-    const { theme, setTheme } = useTheme();
+    const {theme, setTheme} = useTheme();
 
     return (
         <SwitchPrimitive.Root
-            onCheckedChange={(checked) => {
-                setTheme(checked ? 'dark' : 'light');
-            }}
-            checked={theme === 'dark'}
             data-slot="switch"
+            checked={theme === 'dark'}
+            onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
             className={cn(
                 "peer group relative p-0.5",
-                "data-[state=checked]:bg-neutral-dark-500",
-                "data-[state=unchecked]:bg-neutral-300",
-                "focus-visible:border-ring",
-                "focus-visible:ring-ring/50",
-                "dark:data-[state=unchecked]:bg-input/80",
+                "bg-toggle-unchecked border-transparent",
+                "data-[state=checked]:bg-toggle-checked",
                 "inline-flex h-[30px] w-16 shrink-0 items-center",
-                "rounded-sm border border-transparent shadow-xs",
+                "rounded-sm border shadow-xs",
                 "transition-all outline-none",
                 "disabled:cursor-not-allowed disabled:opacity-50",
                 className
@@ -32,7 +27,7 @@ export const ThemeToggle = ({ className, ...props }: React.ComponentProps<typeof
         >
             <div className={cn(
                 "fixed z-40 w-[60px] flex justify-around [&>svg]:size-3.5",
-                "[&>svg]:group-data-[state=checked]:text-neutral-0"
+                "[&>svg]:group-data-[state=checked]:text-white"
             )}>
                 <IconLightTheme className={cn(
                     ' left-[18px]',
@@ -46,11 +41,9 @@ export const ThemeToggle = ({ className, ...props }: React.ComponentProps<typeof
             <SwitchPrimitive.Thumb
                 data-slot="switch-thumb"
                 className={cn(
-                    "bg-neutral-0",
-                    "data-[state=unchecked]:bg-neutral-0 data-[state=checked]:bg-neutral-dark-600",
-                    "dark:data-[state=unchecked]:bg-neutral-dark-0",
-                    "dark:data-[state=checked]:bg-primary-dark-600",
-                    "pointer-events-none block w-[30px] h-[26px] rounded-[4px] ring-0",
+                    "data-[state=unchecked]:bg-toggle-thumb-unchecked", 
+                    "data-[state=checked]:bg-toggle-thumb-checked",
+                    "pointer-events-none block w-[30px] h-[26px] rounded-sm ring-0",
                     "transition-transform",
                     "data-[state=checked]:translate-x-[calc(100%-2px)]",
                     "data-[state=unchecked]:translate-x-0"

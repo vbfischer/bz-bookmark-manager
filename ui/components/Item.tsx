@@ -27,13 +27,13 @@ export const Item = ({ className, asChild = false, ...props }: React.ComponentPr
                 // Sizing & Spacing
                 "py-2 px-3",
                 // Color & Background
-                "bg-neutral-0 text-sm dark:bg-neutral-dark-800 dark:text-neutral-dark-100",
+                "bg-background text-foreground text-sm ",
                 // Border & Border Radius
                 "border border-transparent rounded-md",
                 // Hover
-                "hover:bg-neutral-100 dark:hover:bg-neutral-dark-600 dark:hover:text-neutral-0",
+                "hover:bg-accent-secondary",
                 // Active
-                "active:bg-neutral-100 dark:active:bg-neutral-dark-600 dark:active:text-neutral-0",
+                "active:bg-accent-secondary",
                 // Focus & Ring
                 "outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px]",
                 // Transitions & Animations

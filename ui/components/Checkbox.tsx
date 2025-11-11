@@ -9,13 +9,13 @@ export const Checkbox = ({ className, ...props }: React.ComponentProps<typeof Ch
         <CheckboxPrimitive.Root
             data-slot="checkbox"
             className={cn(
-                "peer bg-neutral-0 border-input dark:bg-teal-700",
+                "peer bg-white text-white border-input",
                 // Hover State
-                "hover:bg-neutral-300",
+                "hover:bg-accent-secondary",
 
                 // Checked State
-                "data-[state=checked]:text-neutral-0 data-[state=checked]:bg-teal-700 dark:data-[state=checked]:bg-primary", 
-                "data-[state=checked]:border-primary focus:shadow-focus dark:focus:shadow-dark-focus", 
+                "data-[state=checked]:text-white data-[state=checked]:bg-primary ", 
+                "focus:shadow-focus-ring", 
 
                 // Invalid State
                 "aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40", 

@@ -75,11 +75,6 @@ const preview: Preview = {
       );
     },
 
-    (Story) => (
-      <ThemeProvider>
-        <Story />
-      </ThemeProvider>
-    )
   ]
 };
 

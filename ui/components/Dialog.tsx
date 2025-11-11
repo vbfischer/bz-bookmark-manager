@@ -3,6 +3,7 @@ import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { cn } from "@/lib/utils";
 import { IconClose } from "../icons";
+import { Button } from "./Button";
 
 export const Dialog = ({ ...props }: React.ComponentProps<typeof DialogPrimitive.Root>) => {
     return <DialogPrimitive.Root data-slot="dialog-root" {...props} />;
@@ -30,7 +31,7 @@ export const DialogOverlay = ({ className, ...props }: React.ComponentProps<type
                 // Z-Index
                 "z-50",
                 // Appearance
-                "bg-[#131313]/50",
+                "bg-overlay/50",
                 // Animations & Transitions
                 "data-[state=open]:animate-in data-[state=closed]:animate-out",
                 "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
@@ -63,7 +64,7 @@ export const DialogContent = ({
                     "flex flex-col max-w-lg w-full gap-8 p-8",
 
                     // Appearance
-                    "bg-background dark:bg-neutral-dark-800 rounded-2xl",
+                    "bg-background text-foreground rounded-2xl",
 
                     // Animations & Transitions
                     "duration-200",
@@ -86,7 +87,7 @@ export const DialogContent = ({
                             // Position & Transform
                             "absolute top-4 right-4",
                             // Layout & Sizing
-                            "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+                            "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5",
                             // Appearance
                             "rounded-xs opacity-70",
                             // Interactions & States
@@ -97,7 +98,7 @@ export const DialogContent = ({
                             "ring-offset-background focus:ring-ring focus:ring-2 focus:ring-offset-2 focus:outline-hidden"
                         )}
                     >
-                        <IconClose />
+                        <Button size="icon" variant="secondary" contentLeft={<IconClose/>}/>
                         <span className="sr-only">Close</span>
                     </DialogPrimitive.Close>
                 )}
@@ -125,7 +126,7 @@ export const DialogTitle = ({ className, ...props }: React.ComponentProps<typeof
             data-slot="dialog-title"
             className={cn(
                 "text-[24px] leading-none font-bold",
-                "text-neutral-900 dark:text-neutral-0",
+                "text-secondary-foreground",
                 className
             )}
             {...props}
@@ -138,7 +139,7 @@ export const DialogDescription = ({ className, ...props }: React.ComponentProps<
         <DialogPrimitive.Description
             data-slot="dialog-description"
             className={cn(
-                "text-neutral-800 dark:text-neutral-dark-100 text-[14px]",
+                "text-foreground text-[14px]",
                 className
             )}
             {...props}

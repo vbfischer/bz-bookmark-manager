@@ -7,8 +7,18 @@ export const Label = ({ className, ...props }: React.ComponentProps<typeof Label
     <LabelPrimitive.Root
       data-slot="label"
       className={cn(
-          "text-neutral-900 dark:text-neutral-0",
-        "flex items-center gap-2 text-sm leading-none font-medium select-none group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+        // Color
+        "text-secondary-foreground",
+        // Layout
+        "flex items-center gap-2",
+        // Typography
+        "text-sm font-medium leading-none",
+        // Interactivity
+        "select-none",
+        // Disabled states
+        "group-data-[disabled=true]:pointer-events-none group-data-[disabled=true]:opacity-50 peer-disabled:cursor-not-allowed peer-disabled:opacity-50",
+        // Required
+        "group-data-[required=true]:after:content-['_*']",
         className
       )}
       {...props}

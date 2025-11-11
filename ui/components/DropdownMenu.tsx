@@ -47,10 +47,10 @@ export const DropdownMenuContent = ({
                         "flex flex-col gap-1",
 
                         // Appearance
-                        "rounded-lg border p-2 border-neutral-100",
-                        "bg-neutral-0 text-neutral-800 dark:bg-neutral-dark-600 dark:text-neutral-dark-100",
-                        "shadow-dropdown text-[14px] *:rounded-md",
-                        "*:bg-neutral-0 dark:*:bg-neutral-dark-600",
+                        "rounded-lg border p-2 border-accent-secondary",
+                        "bg-background text-foreground",
+                        "shadow-lg text-[14px] *:rounded-md",
+                        "*:bg-background",
 
                         // Animations - Open/Close States
                         "data-[state=open]:animate-in data-[state=closed]:animate-out",
@@ -93,7 +93,7 @@ export const DropdownMenuItem = ({
                     "cursor-default",
                     
                     // States
-                    "focus:bg-accent focus:text-accent-foreground",
+                    "hover:text-dropdown-foreground-accent",
                     "data-disabled:pointer-events-none"
                 ],
                 className

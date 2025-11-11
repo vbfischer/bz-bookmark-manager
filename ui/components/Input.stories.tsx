@@ -16,3 +16,16 @@ export const Default: Story = {
         placeholder: "Enter text",
     }
 }
+
+export const WithError: Story = {
+    args: {
+        value: "Is Error"
+    },
+    decorators: [
+        (Story) => (
+            <div className="group" data-invalid="true">
+                <Story/>
+            </div>
+        )
+    ]
+}

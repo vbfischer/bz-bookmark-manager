@@ -25,6 +25,20 @@ export const Default: Story = {
     }
 }
 
+export const WithOpen: Story = {
+    render: () => {
+        return (
+            <div className="group" data-state="open">
+                <Avatar>
+                    <AvatarImage src="https://github.com/shadcn.png" alt="Avatar" />
+                    <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+
+            </div>
+        )
+    }
+}
+
 export const WithFallback: Story = {
     render: () => {
         return (

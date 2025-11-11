@@ -9,7 +9,7 @@ export const InputGroup = ({ className, ...props }: React.ComponentProps<"div">)
             role="group"
             className={cn(
                 "group/input-group border-input relative flex w-full items-center rounded-md border transition-[color,box-shadow] outline-none",
-                "bg-neutral-0 dark:bg-neutral-dark-600 hover:bg-neutral-100 p-1 dark:text-neutral-dark-100 dark:placeholder:text-neutral-dark-100 dark:hover:bg-neutral-dark-500",
+                "bg-background text-foreground hover:bg-accent-secondary p-1",
                 "min-w-0 has-[>textarea]:h-auto",
                 // Variants based on alignment.
                 "has-[>[data-align=inline-start]]:[&>input]:pl-2",

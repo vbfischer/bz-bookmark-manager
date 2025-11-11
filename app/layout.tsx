@@ -16,9 +16,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${manrope.variable} antialiased`}
+        className={`${manrope.variable} subpixel-antialiased`}
       >
-        <ThemeProvider enableSystem={false}>{children}</ThemeProvider>
+        <ThemeProvider enableSystem={false}>
+          <div className="bg-neutral-100 h-screen">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
