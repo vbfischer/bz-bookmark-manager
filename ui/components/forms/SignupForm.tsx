@@ -1,70 +1,95 @@
 'use client'
 
-import Link from 'next/link';
 import { useForm } from '@tanstack/react-form';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { signUp } from '@/lib/auth-client';
 import * as z from 'zod';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../Card';
 import { Logo } from '../Logo';
 import { cn } from '@/lib/utils';
-import { Field, FieldError, FieldGroup, FieldLabel } from '../Field';
-import { Input } from '../Input';
 import { Button } from '../Button';
-import { signIn } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { FieldGroup, FieldLabel, FieldError, Field } from '../Field';
+import { Input } from '../Input';
 
-const loginSchema = z.object({
-    email: z.email({ message: "Invalid email address" }),
-    password: z.string().min(6, { message: "Password must be at least 6 characters long" })
+const signupSchema = z.object({
+    fullName: z.string().min(1, { message: "Full name is required" }).max(100),
+    email: z.email({ message: "Enter a valid email address." }),
+    password: z.string().min(8, { message: "Must be at least 8 characters long." }),
 });
 
-export const LoginForm = () => {
+export const SignupForm = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(false);
 
     const form = useForm({
         defaultValues: {
+            fullName: '',
             email: '',
             password: ''
         },
         validators: {
-            onSubmit: loginSchema
+            onSubmit: signupSchema
         },
         onSubmit: async ({ value }) => {
-            setLoading(true);
+            setLoading(true)
             try {
-                const { email, password } = value;
-
-                await signIn.email({
+                const { fullName, email, password } = value
+                await signUp.email({
+                    name: fullName,
                     email,
-                    password
+                    password,
+                    callbackURL: "/dashboard"
                 });
-                router.push("/dashboard")
 
+                router.push("/dashboard")
             } finally {
                 setLoading(false)
             }
         }
-    });
+    })
 
     return (
-        <Card className={cn(
+        <Card className={(
             "w-md py-10"
         )}>
             <CardHeader>
                 <Logo />
-                <CardTitle className={cn()}>Log in to your account</CardTitle>
-                <CardDescription>Welcome back! Please enter your details.</CardDescription>
+                <CardTitle>Create your account</CardTitle>
+                <CardDescription>Join us and start saving your favorite links — organized, searchable, and always within reach.</CardDescription>
             </CardHeader>
             <CardContent>
                 <form
-                    id="login-form"
-                    className={cn()}
+                    id="signup-form"
                     onSubmit={(e) => {
                         e.preventDefault();
-                        form.handleSubmit();
+                        form.handleSubmit()
                     }}
                 >
+                    <FieldGroup>
+                        <form.Field name="fullName">
+                            {(field) => {
+                                const isInvalid = field.state.meta.isTouched && !field.state.meta.isValid;
+                                return (
+                                    <Field data-invalid={isInvalid}>
+                                        <FieldLabel htmlFor={field.name}>Full Name</FieldLabel>
+                                        <Input
+                                            id={field.name}
+                                            name={field.name}
+                                            value={field.state.value}
+                                            onBlur={field.handleBlur}
+                                            onChange={(e) => field.handleChange(e.target.value)}
+                                            aria-invalid={isInvalid}
+                                        />
+                                        {isInvalid && (
+                                            <FieldError errors={field.state.meta.errors} />
+                                        )}
+
+                                    </Field>
+                                )
+                            }}
+                        </form.Field>
+                    </FieldGroup>
                     <FieldGroup>
                         <form.Field name="email">
                             {(field) => {
@@ -115,13 +140,12 @@ export const LoginForm = () => {
                 </form>
             </CardContent>
             <CardFooter>
-                <Button disabled={loading} className="w-full" type="submit" form="login-form" label="Log in" />
+                <Button disabled={loading} className="w-full" type="submit" form="signup-form" label="Create account" />
             </CardFooter>
             <CardFooter className={cn(
                 "flex flex-col gap-3"
             )}>
-                <div>Forgot Password? Reset it </div>
-                <div>Dont have an account? <Link href="/signup">Sign Up</Link></div>
+                <div>Already have an account? Log in </div>
             </CardFooter>
         </Card>
     )

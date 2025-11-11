@@ -19,7 +19,7 @@ export default function RootLayout({
         className={`${manrope.variable} subpixel-antialiased`}
       >
         <ThemeProvider enableSystem={false}>
-          <div className="bg-neutral-100 h-screen">
+          <div className="bg-accent-secondary h-screen">
             {children}
           </div>
         </ThemeProvider>

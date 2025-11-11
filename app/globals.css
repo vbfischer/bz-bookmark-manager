@@ -46,7 +46,7 @@
   --color-toggle-unchecked: #dde9e7;
   --color-toggle-checked: #004241;
   --color-toggle-thumb-unchecked: var(--color-neutral-0);
-  --color-toggle-thumb-checked: #002E2D;
+  --color-toggle-thumb-checked: #002e2d;
 
   --font-sans: var(--font-manrope);
 
@@ -72,6 +72,10 @@
   --shadow-focus-ring-destructive: 0 0 0 1px rgba(10, 13, 18, 0.18) inset,
     0 0 0 2px var(--background), 0 0 0 1px rgba(10, 13, 18, 0.18) inset,
     0 0 0 2px var(--background), 0 0 0 4px var(--color-destructive);
+
+  --breakpoint-mobile: 375px;
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1440px;
 }
 
 :root {
