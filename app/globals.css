@@ -47,6 +47,7 @@
   --color-toggle-checked: #004241;
   --color-toggle-thumb-unchecked: var(--color-neutral-0);
   --color-toggle-thumb-checked: #002e2d;
+  --color-badge-background: var(--color-neutral-100);
 
   --font-sans: var(--font-manrope);
 

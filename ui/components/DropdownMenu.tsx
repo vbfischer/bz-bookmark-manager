@@ -29,9 +29,6 @@ export const DropdownMenuContent = ({
     align = 'start',
     ...props
 }: React.ComponentProps<typeof DropdownMenuPrimitive.Content>) => {
-    const {theme} = useTheme();
-
-    console.log('THEME', theme)
     return (
         <DropdownMenuPrimitive.Portal>
             <DropdownMenuPrimitive.Content
@@ -123,10 +120,9 @@ export const DropdownMenuCheckboxItem = ({
 
                     // Interaction & States
                     "cursor-default select-none outline-hidden",
-                    "focus:bg-accent focus:text-accent-foreground",
 
                     // Visual Styling
-                    "rounded-sm hover:bg-neutral-100 dark:hover:bg-neutral-dark-800 cursor-default",
+                    "rounded-sm hover:bg-accent-secondary cursor-default",
 
                     // Disabled States
                     "data-disabled:pointer-events-none data-disabled:opacity-50",

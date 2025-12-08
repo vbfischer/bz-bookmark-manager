@@ -16,7 +16,7 @@ export const Separator = ({
                 // Layout & Sizing
                 "shrink-0",
                 // Background
-                "bg-border-accent",
+                "bg-foreground",
                 // Horizontal orientation
                 "data-[orientation=horizontal]:h-px",
                 "data-[orientation=horizontal]:w-full",

@@ -8,6 +8,20 @@
       "when": 1762182214807,
       "tag": "0000_mature_midnight",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1762887333451,
+      "tag": "0001_faulty_microchip",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1762892144599,
+      "tag": "0002_thin_vindicator",
+      "breakpoints": true
     }
   ]
 }

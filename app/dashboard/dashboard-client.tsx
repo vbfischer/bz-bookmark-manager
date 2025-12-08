@@ -1,85 +1,98 @@
-"use client";
+'use client'
 
-import { signOut } from "@/lib/auth-client";
-import { useRouter } from "next/navigation";
-
-interface DashboardClientProps {
-  session: {
-    user: {
-      id: string;
-      name: string;
-      email: string;
-    };
-  };
+import { GetFilteredBookmarksResult, SortBy } from "@/db";
+import { cn } from "@/lib/utils";
+import {
+  DropdownMenuTrigger, DropdownMenu, DropdownMenuContent,
+  DropdownMenuCheckboxItem
+} from "@/ui/components";
+import { Button } from "@/ui/components/Button";
+import { Toolbar } from "@/ui/components/Toolbar";
+import { IconSort } from "@/ui/icons";
+import { useArchived } from "@/hooks/use-archived";
+import { useSortBy } from "@/hooks/use-sortby";
+import { BookmarkItem } from "@/ui/components/BookmarkItem";
+export interface DashboardClientProps {
+  bookmarks: GetFilteredBookmarksResult
+  archived: boolean;
+  selectedTags: string[];
+  searchTerm?: string;
 }
 
-export default function DashboardClient({ session }: DashboardClientProps) {
-  const router = useRouter();
+const getTitle = (selectedTags: string[], archived: boolean, searchTerm?: string) => {
+  if (selectedTags.length === 0) {
+    if (archived) {
+      return "Archived bookmarks"
+    } else {
+      return "All bookmarks";
+    }
+  }
+  if (selectedTags.length > 0) {
+    if (archived) {
+      return `Archived bookmarks tagged: ${selectedTags.join(", ")}`;
+    }
 
-  const handleSignOut = async () => {
-    await signOut();
-    router.push("/login");
-  };
+    return `Bookmarks tagged: ${selectedTags.join(", ")}`;
+  }
+};
+
+const DashboardClient = ({ bookmarks, selectedTags, searchTerm }: DashboardClientProps) => {
+  const [sortByValue, setSortBy] = useSortBy();
+  const [archived] = useArchived()
+
+  const title = getTitle(selectedTags, archived, searchTerm);
+
+  const handleSortChange = (newSortBy: string) => {
+    setSortBy(newSortBy as SortBy);
+  }
 
   return (
-    <div className="min-h-screen bg-neutral-0 dark:bg-neutral-900">
-      {/* Header */}
-      <header className="bg-white dark:bg-zinc-900 shadow-sm border-b border-zinc-200 dark:border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <h1 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-                Bookmark Manager
-              </h1>
-            </div>
-            <div className="flex items-center space-x-4">
-              <div className="text-sm text-zinc-600 dark:text-zinc-400">
-                Welcome, {session.user.name || session.user.email}
-              </div>
-              <button
-                onClick={handleSignOut}
-                className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
-              >
-                Sign Out
-              </button>
-            </div>
-          </div>
+    <main className="flex flex-col w-full flex-1">
+      <Toolbar />
+      <div className={cn(
+        "px-8 pt-8 pb-16 flex flex-col gap-5 flex-1"
+      )}>
+        <div className={cn(
+          "flex justify-between items-center"
+        )}>
+          <h2 className={cn(
+            "text-[24px] font-bold"
+          )}>{title}</h2>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button label="Sort by" variant="secondary" size="sm" contentLeft={<IconSort />} />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuCheckboxItem onCheckedChange={() => handleSortChange("recently_added")} checked={sortByValue === "recently_added"}>Recently added</DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem onCheckedChange={() => handleSortChange("recently_visited")} checked={sortByValue === "recently_visited"}>Recently visited</DropdownMenuCheckboxItem>
+              <DropdownMenuCheckboxItem onCheckedChange={() => handleSortChange("most_visited")} checked={sortByValue === "most_visited"}>Most visited</DropdownMenuCheckboxItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-        <div className="px-4 py-6 sm:px-0">
-          <div className="border-4 border-dashed border-zinc-200 dark:border-zinc-800 rounded-lg p-8">
-            <div className="text-center">
-              <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mb-4">
-                Your Bookmarks
-              </h2>
-              <p className="text-zinc-600 dark:text-zinc-400 mb-8">
-                This is your protected dashboard. Only authenticated users can see this page.
-              </p>
-              
-              {/* Bookmark List Placeholder */}
-              <div className="bg-white dark:bg-zinc-900 shadow rounded-lg p-6">
-                <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-50 mb-4">
-                  Recent Bookmarks
-                </h3>
-                <div className="text-zinc-500 dark:text-zinc-400">
-                  No bookmarks yet. Start adding some!
-                </div>
-                
-                {/* Add Bookmark Button */}
-                <button className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                  <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Add Bookmark
-                </button>
-              </div>
-            </div>
-          </div>
+        <div className={cn(
+          "flex flex-wrap gap-8"
+        )}>
+          {bookmarks.map(bookmark => (
+            <BookmarkItem 
+              key={bookmark.id}
+              id={bookmark.id}
+              title={bookmark.title}
+              url={bookmark.url}
+              favicon={bookmark.favicon}
+              description={bookmark.description}
+              tags={bookmark.bookmarkTags.map(tag => ({ 
+                tagId: tag.tagId, 
+                name: tag.tag.name 
+              }))}
+              visitCount={bookmark.visitCount}
+              lastVisited={bookmark.lastVisited}
+              createdAt={bookmark.createdAt}
+            />
+          ))}
         </div>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }
+
+export default DashboardClient;

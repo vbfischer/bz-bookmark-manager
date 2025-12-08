@@ -39,7 +39,7 @@ export const Item = ({ className, asChild = false, ...props }: React.ComponentPr
                 // Transitions & Animations
                 "transition-colors duration-100",
                 // Hover States
-                "[a]:hover:bg-accent/50 [a]:transition-colors",
+                "[a]:hover:bg-accent-secondary [a]:transition-colors",
                 className
             )}
             {...props}
@@ -54,7 +54,7 @@ const itemMediaVariants = cva(
         // Sizing & Spacing
         "gap-2",
         // Transforms & Positioning
-        "group-has-data-[slot=item-description]/item:self-start group-has-data-[slot=item-description]/item:translate-y-0.5",
+        " group-has-data-[slot=item-description]/item:translate-y-0.5",
         // Pointer Events
         "[&_svg]:pointer-events-none",
     ],
@@ -166,7 +166,7 @@ export const ItemSeparator = ({ className, ...props }: React.ComponentProps<type
         <Separator
             data-slot="item-separator"
             orientation="horizontal"
-            className={cn("my-0", className)}
+            className={cn("my-0 ", className)}
             {...props}
         />
     )

@@ -32,13 +32,15 @@ export const InputGroupInput = ({ className, ...props }: React.ComponentProps<"i
     return (
         <Input
             data-slot="input-group-control"
-            className={
-                cn(
-                    "flex-1 focus:shadow-none dark:focus:shadow-none rounded-none border-0 bg-transparent shadow-none focus-visible:ring-0 dark:bg-transparent",
-
-                    className
-                )
-            }
+            className={cn(
+                // Layout & box model
+                "rounded-none border-0 bg-transparent shadow-none",
+                // Focus states
+                "focus:shadow-none dark:focus:shadow-none focus-visible:ring-0",
+                // Color mode
+                "dark:bg-transparent",
+                className
+            )}
             {...props}
         />
     )
